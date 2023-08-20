@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.blogxhc.mapper.UserMapper">
+        <select id="login" resultType="com.atguigu.blogxhc.pojos.User">
+        select * from user
+        where username = #{username}
+    </select>
+
+    <select id="findById" resultType="com.atguigu.blogxhc.pojos.User">
+        select * from user
+        where uid = #{uid}
+    </select>
+
+    <update id="updateUserInfo">
+        update user
+        <set>
+            <if test="username != null">
+                username = #{username},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="phone != null">
+                phone = #{phone},
+            </if>
+            <if test="introduction != null">
+                introduction = #{introduction},
+            </if>
+            update_time = now()
+        </set>
+        where uid = #{uid}
+    </update>
+
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.blogxhc.mapper.CategoryMapper">
+
+    <select id="findAll" resultType="com.atguigu.blogxhc.pojos.Category">
+        select * from category
+    </select>
+    <select id="queryListPage" resultType="com.atguigu.blogxhc.pojos.Category">
+        select * from category
+
+            <if test="cname != null and canme !=''">
+                where cname like concat("%",#{cname},"%");
+            </if>
+
+    </select>
+
+    <insert id="addCategory">
+        insert into category(cid,cname)
+        values (#{cid},#{cname})
+    </insert>
+
+    <delete id="deleteCategory">
+        delete from category
+        where cid = #{cid}
+    </delete>
+
+    <update id="updateCategory">
+        update category
+        <set>
+            <if test="cname != null">
+                cname = #{cname},
+            </if>
+            update_time = now()
+        </set>
+        where cid = #{cid}
+    </update>
+
+</mapper>

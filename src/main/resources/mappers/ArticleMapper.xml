@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.blogxhc.mapper.ArticleMapper">
+    <select id="findAllById" resultType="com.atguigu.blogxhc.pojos.Article">
+        select * from article
+        <if test="cid != null">
+        <where>
+            cid = #{cid}
+        </where>
+        </if>
+    </select>
+    <select id="findById" resultType="com.atguigu.blogxhc.pojos.Article">
+        select * from article
+        where id = #{id}
+    </select>
+
+    <insert id="addArticle">
+        insert into article(title,content,cid,uid)
+        values (#{title},#{content},#{cid},#{uid})
+    </insert>
+
+    <delete id="deleteArticle">
+        delete from article
+        where id = #{id}
+    </delete>
+
+</mapper>
