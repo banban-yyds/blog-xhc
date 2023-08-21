@@ -1,5 +1,6 @@
 package com.atguigu.blogxhc.service.impl;
 
+import com.atguigu.blogxhc.annotation.QueryCache;
 import com.atguigu.blogxhc.exception.UserNameNotFindException;
 import com.atguigu.blogxhc.exception.UserPasswordNotFindException;
 import com.atguigu.blogxhc.mapper.UserMapper;
@@ -26,6 +27,7 @@ public class UserServiceimpl implements UserService {
     }
 
     @Override
+    @QueryCache(keyPrefix = "user:info")
     public User findById(Integer uid) {
         return userMapper.findById(uid);
     }

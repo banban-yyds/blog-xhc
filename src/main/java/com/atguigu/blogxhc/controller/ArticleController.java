@@ -1,5 +1,6 @@
 package com.atguigu.blogxhc.controller;
 
+import com.atguigu.blogxhc.annotation.QueryCache;
 import com.atguigu.blogxhc.constant.SessionConstant;
 import com.atguigu.blogxhc.pojos.Article;
 import com.atguigu.blogxhc.pojos.User;
